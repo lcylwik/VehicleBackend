@@ -19,8 +19,8 @@ class VehicleService {
         return await VehicleModel.create(data)
     }
 
-    async update(data: IVehicle) {
-        return await VehicleModel.updateOne(data)
+    async findByIdAndUpdate(id: string, data: IVehicle) {
+        return await VehicleModel.findByIdAndUpdate(id, data,  { new: true }).exec()
     }
 
     async vehicleExist(id: number) {

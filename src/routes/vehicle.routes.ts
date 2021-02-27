@@ -12,6 +12,9 @@ export class VehicleRoutes extends CommonRoutes {
             .get(VehicleController.listVehicles)
             .post(verifyExistingCar,
                 VehicleController.createVehicle)
+        
+
+        this.app.route(`/vehicle/:id`)
             .put(cantUpdate,
                 VehicleController.updateVehicle)
 
