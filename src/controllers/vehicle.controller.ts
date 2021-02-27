@@ -1,4 +1,5 @@
 import { Request, Response } from 'express'
+import { IVehicle } from '../interfaces/vehicle.interface'
 import vehicleService from '../services/vehicle.service'
 import { HTTPResponse } from '../utils/http'
 class VehicleController {
@@ -25,7 +26,7 @@ class VehicleController {
     async createVehicle(req: Request, res: Response) {
         try {
             console.log('****** Create Vehicle ******', req.body)
-            const data = req.body
+            const data: IVehicle = req.body
             const newVehicle = await vehicleService.create(data)
             return HTTPResponse.successReponse({data: newVehicle}, res)
         } catch (error) {
@@ -38,7 +39,7 @@ class VehicleController {
     async updateVehicle(req: Request, res: Response) {
         try {
             console.log('****** Update Vehicle ******', req.body)
-            const body = req.body
+            const body: IVehicle = req.body
             const id: string = req.params.id || ''
             const newVehicle = await vehicleService.findByIdAndUpdate(id, body) || {}
             return HTTPResponse.successReponse({ data: newVehicle }, res)

@@ -11,12 +11,10 @@ class DB {
   }
 
   async connect() {
-    const host = process.env.DB_HOST
-    const port = process.env.DB_PORT
-    const db = process.env.DB_DB
+    const { DB_HOST, DB_PORT, DB_DB } = process.env
 
     try {
-      await mongoose.connect(`mongodb://${host}:${port}/${db}`, {
+      await mongoose.connect(`mongodb://${DB_HOST}:${DB_PORT}/${DB_DB}`, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false,
